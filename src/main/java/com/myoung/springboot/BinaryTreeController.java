@@ -18,10 +18,11 @@ public class BinaryTreeController {
         return binaryTreeService.getBinaryTrees();
     }
 
-//    @PostMapping("/binary-tree")
-//    public BinaryTree addBinaryTree(@RequestBody String numbers) {
-//        return binaryTreeService.createBinaryTree(numbers);
-//    }
+    @PostMapping("/binary-tree")
+    public Node createTree(@RequestBody String numbers) {
+        Node root = binaryTreeService.createTree(numbers);
+        return root;
+    }
 
     @DeleteMapping("/binary-tree/{id}")
     public void deleteBinaryTree(@PathVariable long id) {
