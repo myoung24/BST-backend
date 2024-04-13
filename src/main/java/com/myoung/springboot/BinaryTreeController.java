@@ -19,9 +19,9 @@ public class BinaryTreeController {
     }
 
     @PostMapping("/binary-tree")
-    public Node createTree(@RequestBody String numbers) {
+    public String createTree(@RequestBody List<Integer> numbers) {
         Node root = binaryTreeService.createTree(numbers);
-        return root;
+        return root.toString();
     }
 
     @DeleteMapping("/binary-tree/{id}")

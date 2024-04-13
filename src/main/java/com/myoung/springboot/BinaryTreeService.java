@@ -5,8 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+import static com.myoung.springboot.BinarySearchTree.createNode;
+
 @Service
 public class BinaryTreeService {
+
     @Autowired
     private BinaryTreeRepository binaryTreeRepository;
 
@@ -15,27 +18,33 @@ public class BinaryTreeService {
     }
 
 
-    public Node createTree(String numbers){
+    public Node createTree(List<Integer> numbers) {
         Node root = null;
-        // Split the string into an array of integers
-        String[] numbersArray = numbers.split(" ");
-        List<Integer> numbersList = new java.util.ArrayList<>();
-
-        for (String number : numbersArray) {
-            numbersList.add(Integer.parseInt(number));
+        System.out.println(numbers);
+        for (Integer number : numbers) {
+            root = insert(root, number);
         }
-        for (Integer number : numbersList) {
-            root = BinarySearchTree.insert(root, number);
-        }
+        System.out.println(root);
         return root;
 
     }
 
+    public static Node insert(Node node, int data) {
+        if (node == null) {
+            return createNode(data);
+        }
 
-
+        if (data < node.data) {
+            node.left = insert(node.left, data);
+        } else if (data > node.data) {
+            node.right = insert(node.right, data);
+        }
+        return node;
+    }
 
 
     public void deleteBinaryTree(long binaryTree) {
         binaryTreeRepository.deleteById(binaryTree);
     }
+
 }
