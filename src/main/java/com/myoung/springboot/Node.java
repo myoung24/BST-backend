@@ -1,11 +1,10 @@
 package com.myoung.springboot;
 
 public class Node {
-    int data;
-    Node left;
-    Node right;
+     int data;
+     Node left;
+     Node right;
 }
-
 
 
 

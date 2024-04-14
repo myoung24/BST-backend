@@ -1,9 +1,5 @@
 package com.myoung.springboot;
 
-
-import java.util.List;
-import com.myoung.springboot.BinaryTreeRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BinarySearchTree {
@@ -18,17 +14,6 @@ public class BinarySearchTree {
         node.right = null;
         return node;
     }
-
-//    public List<Node> insertNumbers(List<Integer> numbers) {
-//        Node root = null;
-//        List<Node> nodes = new java.util.ArrayList<>();
-//        for (Integer number : numbers) {
-//            root = insert(root, number);
-//            nodes.add(root);
-//
-//        }
-//        return nodes;
-//    }
 
 
 

@@ -13,6 +13,10 @@ public class BinaryTreeController {
     private BinaryTreeService binaryTreeService;
 
 
+    @Autowired
+    private BinaryTreeRepository binaryTreeRepository;
+
+
     @GetMapping("/binary-tree")
     public List<BinaryTree> getBinaryTrees() {
         return binaryTreeService.getBinaryTrees();
@@ -20,8 +24,9 @@ public class BinaryTreeController {
 
     @PostMapping("/binary-tree")
     public String createTree(@RequestBody List<Integer> numbers) {
-        Node root = binaryTreeService.createTree(numbers);
-        return root.toString();
+        BinaryTree root = binaryTreeService.createTree(numbers);
+        return binaryTreeRepository.save(root).toString();
+
     }
 
     @DeleteMapping("/binary-tree/{id}")
